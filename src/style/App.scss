@@ -1,0 +1,50 @@
+@use './utilities/reset';
+@use './utilities/variables';
+@use './comp/Nav';
+@use './comp/Home';
+@use './comp/Article';
+
+html, body, #root {
+  height: 100%;
+  background-color: variables.$primary;
+}
+
+#root { width: 100%; }
+
+img, button, a, ul, h1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+  width: 100%;
+  max-width: 6rem;
+  margin: 0rem;
+  padding: 0rem;
+  gap: 0rem;
+  overflow: hidden;
+  object-fit: contain;
+  border-radius: variables.$borderRadius;
+  background-color: transparent;
+}
+
+button, a{
+  transition: transform 0.1s ease;
+  background-color: variables.$primary;
+}
+
+h1, img {
+  font-size: 2.05rem;
+  max-width: 12.5rem;
+}
+
+button > img, a > img { padding: 1.1rem; }
+
+h1 > img { padding: 0.25rem; }
+
+button:hover, a:hover {
+  filter: brightness(85%);
+}
+
+.active {
+  transform: scale(0.9);
+}
