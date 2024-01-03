@@ -197,6 +197,11 @@
   #home > .newsOne > a:nth-child(9) > img {
     display: none;
   }
+
+  #home > .newsOne > a:nth-child(8) > div > h2,
+  #home > .newsOne > a:nth-child(9) > div > h2 {
+    font-size: 1.15rem;
+  }
 }
 
 @media screen and (min-width: 992px) {

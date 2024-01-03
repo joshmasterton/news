@@ -86,11 +86,11 @@ function Article({ lightMode }) {
       <button
         type="button"
         onClick={() => navigate(-1)}
-        className={`${lightMode}Accent`}
+        className={`${lightMode === 'dark' ? 'light' : 'dark'}Accent`}
       >
         <img
           alt="Back"
-          src={lightMode === 'dark' ? backLight : backDark}
+          src={lightMode === 'dark' ? backDark : backLight}
         />
       </button>
     </main>

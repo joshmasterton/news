@@ -1,10 +1,10 @@
-$primary: rgb(235, 235, 235);
+$primary: rgb(230, 230, 235);
 $primaryAccent: rgb(255, 255, 255);
-$primaryBorder: rgb(205, 205, 205);
+$primaryBorder: rgb(205, 205, 200);
 
-$secondary: rgb(34, 34, 36);
-$secondaryAccent: rgb(44, 44, 46);
-$secondaryBorder: rgb(34, 34, 36);
+$secondary: rgb(34, 34, 38);
+$secondaryAccent: rgb(44, 44, 48);
+$secondaryBorder: rgb(34, 34, 38);
 
 $font: black;
 $fontDark: white;
@@ -12,15 +12,6 @@ $fontDark: white;
 $borderRadius: 0.25rem;
 $gradient: linear-gradient(
   45deg,
-  #711DB0,
-  #C21292,
-  #EF4040,
-  #FFA732
-);
-$gradientTwo: linear-gradient(
-  45deg,
-  #FFA732,
-  #EF4040,
-  #C21292,
-  #711DB0,
+  grey,
+  rgb(164, 164, 164)
 );
