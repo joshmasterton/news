@@ -1,12 +1,33 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../style/icons/logo.png';
-import menuIcon from '../style/icons/menu.png';
+import {
+  getLightMode,
+  switchLightMode,
+} from '../utilities/lightMode';
+import { onScroll } from '../utilities/windowEvents';
+import logoDark from '../style/icons/logoDark.png';
+import logoLight from '../style/icons/logoLight.png';
+import menuDark from '../style/icons/menuDark.png';
+import menuLight from '../style/icons/menuLight.png';
+import closeDark from '../style/icons/closeDark.png';
+import closeLight from '../style/icons/closeLight.png';
 
-function Nav({ setActive }) {
+function Nav({ setActive, lightMode, setLightMode }) {
   const [isMenu, setIsMenu] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.className = getLightMode(setLightMode);
+  }, [lightMode]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => onScroll(setIsMenu));
+
+    return () => {
+      window.removeEventListener('scroll', () => onScroll(setIsMenu));
+    };
+  }, []);
 
   const onMenuClick = (e) => {
     setActive(e);
@@ -14,46 +35,110 @@ function Nav({ setActive }) {
     return setIsMenu(true);
   };
 
+  const checkMenuIcon = () => {
+    if (lightMode === 'dark') {
+      if (isMenu) return closeLight;
+      return menuLight;
+    }
+    if (isMenu) return closeDark;
+    return menuDark;
+}
+
   return (
-    <nav>
-      <h1>
-        <img
-          alt=""
-          src={logo}
-        />
-      </h1>
-      <ul>
-        <Link to="/" onClick={(e) => setActive(e)}>
-          Home
-        </Link>
-        <Link to="/" onClick={(e) => setActive(e)}>
-          Hot
-        </Link>
-        <Link to="/" onClick={(e) => setActive(e)}>
-          About
-        </Link>
-      </ul>
-      <ul id={isMenu ? 'dropdown' : 'dropdownHidden'}>
-        <Link to="/" onClick={(e) => setActive(e)}>
-          Home
-        </Link>
-        <Link to="/" onClick={(e) => setActive(e)}>
-          Hot
-        </Link>
-        <Link to="/" onClick={(e) => setActive(e)}>
-          About
-        </Link>
-      </ul>
-      <button
-        type="button"
-        onClick={(e) => onMenuClick(e)}
+    <>
+      <nav className={lightMode}>
+        <h1>
+          <img
+            alt=""
+            src={lightMode === 'dark' ? logoLight : logoDark}
+          />
+        </h1>
+        <ul className={lightMode}>
+          <Link
+            to="/"
+            onClick={(e) => setActive(e)}
+            className={lightMode}
+          >
+            Home
+          </Link>
+          <Link
+            to="/"
+            onClick={(e) => setActive(e)}
+            className={lightMode}
+          >
+            Hot
+          </Link>
+          <Link
+            to="/"
+            onClick={(e) => setActive(e)}
+            className={lightMode}
+          >
+            About
+          </Link>
+          <button
+            type="button"
+            className={lightMode}
+            onClick={(e) => {
+              setActive(e);
+              setTimeout(() => {
+                switchLightMode(setLightMode);
+              }, 100);
+            }}
+          >
+            {lightMode === 'dark' ? 'Light' : 'Dark'}
+          </button>
+        </ul>
+        <button
+          type="button"
+          onClick={(e) => onMenuClick(e)}
+          className={lightMode}
+        >
+          <img
+            alt=""
+            src={checkMenuIcon()}
+          />
+        </button>
+      </nav>
+      <ul
+        id={isMenu ? 'dropdown' : 'dropdownHidden'}
+        className={lightMode}
       >
-        <img
-          alt=""
-          src={menuIcon}
-        />
-      </button>
-    </nav>
+        <Link
+          to="/"
+          onClick={(e) => setActive(e)}
+          className={lightMode}
+        >
+          Home
+        </Link>
+        <Link
+          to="/"
+          onClick={(e) => setActive(e)}
+          className={lightMode}
+        >
+          Hot
+        </Link>
+        <Link
+          to="/"
+          onClick={(e) => setActive(e)}
+          className={lightMode}
+        >
+          About
+        </Link>
+        <button
+          type="button"
+          className={lightMode}
+          onClick={(e) => {
+            setActive(e);
+            setTimeout(() => {
+              switchLightMode(setLightMode);
+            }, 100);
+          }}
+        >
+          {lightMode === 'dark' ? 'Light' : 'Dark'}
+        </button>
+      </ul>
+    </>
+
   );
 }
 

@@ -1,9 +1,11 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import articleIcon from '../style/icons/article.jpg';
-import backIcon from '../style/icons/back.png';
+import backDark from '../style/icons/backDark.png';
+import backLight from '../style/icons/backLight.png';
 
-function Article() {
+function Article({ lightMode }) {
   const navigate = useNavigate();
   const article = {
     id: 0,
@@ -39,8 +41,28 @@ function Article() {
       Excepteur sint occaecat cupidatat
       non proident, sunt in culpa qui officia
       deserunt mollit anim id est laborum.
+      Excepteur sint occaecat cupidatat
+      non proident, sunt in culpa qui officia
+      deserunt mollit anim id est laborum.
+      ut aliquip ex ea commodo consequat.
+      Duis aute irure dolor in reprehenderit
+      in voluptate velit esse cillum
+      dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat
+      non proident, sunt in culpa qui officia
+      deserunt mollit anim id est laborum.
+      Excepteur sint occaecat cupidatat
+      non proident, sunt in culpa qui officia
+      deserunt mollit anim id est laborum.
+      ut aliquip ex ea commodo consequat.
+      Duis aute irure dolor in reprehenderit
+      in voluptate velit esse cillum
+      dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat
+      non proident, sunt in culpa qui officia
+      deserunt mollit anim id est laborum.
     `,
-    publishedAt: new Date(Date.now()).toLocaleDateString(),
+    publishedAt: new Date(Date.now()).toLocaleString(),
   };
   return (
     <main id="article">
@@ -54,10 +76,11 @@ function Article() {
       <button
         type="button"
         onClick={() => navigate(-1)}
+        className={`${lightMode}Accent`}
       >
         <img
           alt="Back"
-          src={backIcon}
+          src={lightMode === 'dark' ? backLight : backDark}
         />
       </button>
     </main>

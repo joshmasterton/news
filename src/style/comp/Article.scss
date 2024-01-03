@@ -6,7 +6,9 @@
   width: 100%;
   gap: 1rem;
   padding: 1rem;
+  padding-top: 1.5rem;
   margin-top: 4.6rem;
+  max-width: 576px;
 }
 
 #article > h1 {
@@ -25,7 +27,7 @@
 }
 
 #article > p {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   line-height: 1.25;
   overflow: hidden;
 }
@@ -34,6 +36,6 @@
   position: fixed;
   bottom: 0;
   left: 0;
-  margin: 1rem;
-  background-color: variables.$primaryAccent;
+  margin: 2rem;
+  z-index: 1;
 }

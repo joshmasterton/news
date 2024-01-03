@@ -3,28 +3,35 @@
 @use './comp/Nav';
 @use './comp/Home';
 @use './comp/Article';
+@use './comp/Footer';
+
+html { background-color: variables.$primary; }
 
 html, body, #root {
   height: 100%;
-  background-color: variables.$primary;
 }
 
-#root { width: 100%; }
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+}
 
-img, button, a, ul, h1{
+img, button, a, ul, h1, h2{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 4rem;
+  height: 3rem;
   width: 100%;
-  max-width: 6rem;
+  max-width: 5rem;
   margin: 0rem;
   padding: 0rem;
   gap: 0rem;
   overflow: hidden;
   object-fit: contain;
   border-radius: variables.$borderRadius;
-  background-color: transparent;
 }
 
 button, a{
@@ -32,14 +39,15 @@ button, a{
   background-color: variables.$primary;
 }
 
-h1, img {
-  font-size: 2.05rem;
-  max-width: 12.5rem;
+h1, img { font-size: 2.05rem; max-width: 10rem; }
+
+h2 { font-size: 1.25rem; }
+
+button > img, a > img { padding: 0.75rem; }
+
+h1 > img {
+  padding: 0.25rem;
 }
-
-button > img, a > img { padding: 1.1rem; }
-
-h1 > img { padding: 0.25rem; }
 
 button:hover, a:hover {
   filter: brightness(85%);
@@ -47,4 +55,24 @@ button:hover, a:hover {
 
 .active {
   transform: scale(0.9);
+}
+
+.light {
+  color: variables.$font;
+  background-color: variables.$primary;
+}
+
+.lightAccent {
+  color: variables.$font;
+  background-color: variables.$primaryAccent;
+}
+
+.dark {
+  color: variables.$fontDark;
+  background-color: variables.$secondary;
+}
+
+.darkAccent {
+  color: variables.$fontDark;
+  background-color: variables.$secondaryAccent;
 }

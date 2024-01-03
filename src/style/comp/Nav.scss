@@ -5,52 +5,55 @@ nav {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 0.25rem;
-  gap: 0.25rem;
+  padding: 1rem;
+  gap: 1rem;
   top: 0;
   z-index: 2;
   background-color: variables.$primary; 
   border-bottom: 2px solid variables.$primaryBorder;
 }
 
-nav > ul {
-  position: absolute;
+nav > ul, #dropdown, #dropdownHidden {
+  position: fixed;
   display: none;
   flex-direction: column;
   width: 100%;
   max-width: 100%;
-  height: 13rem;
+  height: 17rem;
   top: 0;
   right: 0;
-  padding: 0.25rem;
-  gap: 0.25rem;
+  padding: 1rem;
+  gap: 1rem;
+  overflow: hidden;
   transform-origin: top;
-  transition: transform 0.4s ease;
-  background-color: variables.$primary; 
+  transition: transform 0.8s ease;
   border-bottom: 2px solid variables.$primaryBorder;
   border-radius: 0;
+  z-index: 1;
 }
 
-nav > ul > a {
+nav > ul > a, #dropdown > a {
   align-self: flex-end;
 }
 
-nav > #dropdown {
+#dropdown {
   display: flex;
-  transform: translateY(4.6rem) scaleY(1);
+  transform: translateY(5.1rem);
 }
 
-nav > #dropdown > a,
-nav > #dropdownHidden > a {
+#dropdown > a,
+#dropdownHidden > a,
+#dropdown > button,
+#dropdownHidden > button {
   display: flex;
   justify-content: start;
   max-width: 100%;
   padding: 1.5rem;
 }
 
-nav > #dropdownHidden {
+#dropdownHidden {
   display: flex;
-  transform: translateY(4.6rem) scaleY(0);
+  transform: translateY(-12rem);
 }
 
 @media screen and (min-width: 576px) {
@@ -60,21 +63,21 @@ nav > #dropdownHidden {
     flex-direction: row;
     flex: 1;
     width: 100%;
-    height: 4rem;
+    height: 3rem;
     padding: 0;
     justify-content: end;
     border-bottom: 0px;
   }
 
-  nav > #dropdown, nav > #dropdownHidden {
-    position: absolute;
+  #dropdown {
+    position: fixed;
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 10rem;
-    padding: 0.25rem;
-    transform: translateY(4.6rem) scaleY(0); 
-    border-bottom: 2px solid black; 
+    height: 13rem;
+    padding: 1rem;
+    transform: translateY(-12rem);
+    border-bottom: 2px solid variables.$primaryBorder; 
   }
 
   nav > button { display: none; }
