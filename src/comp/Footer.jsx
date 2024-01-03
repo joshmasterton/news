@@ -1,10 +1,15 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { switchLightMode } from '../utilities/lightMode';
 import twitterIcon from '../style/icons/twitter.png';
 import youtubeIcon from '../style/icons/youtube.png';
 
-function Footer({ lightMode }) {
+function Footer({
+  lightMode,
+  setLightMode,
+  setActive,
+}) {
   return (
     <footer>
       <div>
@@ -31,12 +36,18 @@ function Footer({ lightMode }) {
         <Link to="/" className={lightMode}>
           Home
         </Link>
-        <Link to="/" className={lightMode}>
-          About
-        </Link>
-        <Link to="/" className={lightMode}>
-          Menu
-        </Link>
+        <button
+          type="button"
+          className={lightMode}
+          onClick={(e) => {
+            setActive(e);
+            setTimeout(() => {
+              switchLightMode(setLightMode);
+            }, 100);
+          }}
+        >
+          {lightMode === 'dark' ? 'Light' : 'Dark'}
+        </button>
       </div>
       <p>
         Copyright @ 2024 Zonomaly

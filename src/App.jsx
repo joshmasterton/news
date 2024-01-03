@@ -37,7 +37,11 @@ function App() {
       lightMode={lightMode}
       setLightMode={setLightMode}
     />
-    <Footer lightMode={lightMode} />
+    <Footer
+      setActive={setActive}
+      lightMode={lightMode}
+      setLightMode={setLightMode}
+    />
   </>,
     },
     {
@@ -50,7 +54,11 @@ function App() {
       setLightMode={setLightMode}
     />
     <Article lightMode={lightMode} />
-    <Footer lightMode={lightMode} />
+    <Footer
+      setActive={setActive}
+      lightMode={lightMode}
+      setLightMode={setLightMode}
+    />
   </>,
     },
   ]);

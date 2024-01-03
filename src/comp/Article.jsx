@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import articleIcon from '../style/icons/article.jpg';
 import backDark from '../style/icons/backDark.png';
@@ -7,6 +7,16 @@ import backLight from '../style/icons/backLight.png';
 
 function Article({ lightMode }) {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }, 25);
+  }, []);
+
   const article = {
     id: 0,
     img: articleIcon,

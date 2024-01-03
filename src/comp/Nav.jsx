@@ -42,7 +42,7 @@ function Nav({ setActive, lightMode, setLightMode }) {
     }
     if (isMenu) return closeDark;
     return menuDark;
-}
+  };
 
   return (
     <>
@@ -60,20 +60,6 @@ function Nav({ setActive, lightMode, setLightMode }) {
             className={lightMode}
           >
             Home
-          </Link>
-          <Link
-            to="/"
-            onClick={(e) => setActive(e)}
-            className={lightMode}
-          >
-            Hot
-          </Link>
-          <Link
-            to="/"
-            onClick={(e) => setActive(e)}
-            className={lightMode}
-          >
-            About
           </Link>
           <button
             type="button"
@@ -105,24 +91,13 @@ function Nav({ setActive, lightMode, setLightMode }) {
       >
         <Link
           to="/"
-          onClick={(e) => setActive(e)}
           className={lightMode}
+          onClick={(e) => {
+            setIsMenu(false);
+            setActive(e);
+          }}
         >
           Home
-        </Link>
-        <Link
-          to="/"
-          onClick={(e) => setActive(e)}
-          className={lightMode}
-        >
-          Hot
-        </Link>
-        <Link
-          to="/"
-          onClick={(e) => setActive(e)}
-          className={lightMode}
-        >
-          About
         </Link>
         <button
           type="button"

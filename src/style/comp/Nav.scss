@@ -19,7 +19,7 @@ nav > ul, #dropdown, #dropdownHidden {
   flex-direction: column;
   width: 100%;
   max-width: 100%;
-  height: 17rem;
+  height: 9.5rem;
   top: 0;
   right: 0;
   padding: 1rem;
@@ -53,7 +53,7 @@ nav > ul > a, #dropdown > a {
 
 #dropdownHidden {
   display: flex;
-  transform: translateY(-12rem);
+  transform: translateY(-4.5rem);
 }
 
 @media screen and (min-width: 576px) {
@@ -74,9 +74,9 @@ nav > ul > a, #dropdown > a {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 13rem;
+    height: 9.5rem;
     padding: 1rem;
-    transform: translateY(-12rem);
+    transform: translateY(-4.5rem);
     border-bottom: 2px solid variables.$primaryBorder; 
   }
 
