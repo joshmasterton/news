@@ -10,6 +10,10 @@ footer {
   border-top: 2px solid variables.$primaryBorder;
 }
 
+footer img { 
+  margin: 1rem;
+}
+
 footer > div {
   display: flex;
   justify-content: center;

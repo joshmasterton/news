@@ -7,12 +7,7 @@ import {
   switchLightMode,
 } from '../utilities/lightMode';
 import { onScroll } from '../utilities/windowEvents';
-import logoDark from '../style/icons/logoDark.png';
-import logoLight from '../style/icons/logoLight.png';
-import menuDark from '../style/icons/menuDark.png';
-import menuLight from '../style/icons/menuLight.png';
-import closeDark from '../style/icons/closeDark.png';
-import closeLight from '../style/icons/closeLight.png';
+import planet from '../style/icons/planet.png';
 
 function Nav({ setActive, lightMode, setLightMode }) {
   const [isMenu, setIsMenu] = useState(false);
@@ -35,24 +30,19 @@ function Nav({ setActive, lightMode, setLightMode }) {
     return setIsMenu(true);
   };
 
-  const checkMenuIcon = () => {
-    if (lightMode === 'dark') {
-      if (isMenu) return closeLight;
-      return menuLight;
-    }
-    if (isMenu) return closeDark;
-    return menuDark;
-  };
-
   return (
     <>
       <nav className={lightMode}>
-        <h1>
+        <Link
+          to="/"
+          className={lightMode}
+        >
           <img
             alt=""
-            src={lightMode === 'dark' ? logoLight : logoDark}
+            src={planet}
           />
-        </h1>
+          <h1>NEWS</h1>
+        </Link>
         <ul className={lightMode}>
           <Link
             to="/"
@@ -79,10 +69,31 @@ function Nav({ setActive, lightMode, setLightMode }) {
           onClick={(e) => onMenuClick(e)}
           className={lightMode}
         >
-          <img
-            alt=""
-            src={checkMenuIcon()}
-          />
+          {!isMenu ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="currentColor"
+                d="M4 18h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1m0-5h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1M3 7c0 .55.45 1 1 1h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1"
+              />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="currentColor"
+                d="M18.3 5.71a.996.996 0 0 0-1.41 0L12 10.59L7.11 5.7A.996.996 0 1 0 5.7 7.11L10.59 12L5.7 16.89a.996.996 0 1 0 1.41 1.41L12 13.41l4.89 4.89a.996.996 0 1 0 1.41-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4"
+              />
+            </svg>
+          )}
         </button>
       </nav>
       <ul

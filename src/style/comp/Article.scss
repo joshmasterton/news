@@ -6,8 +6,9 @@
   width: 100%;
   gap: 1rem;
   padding: 1rem;
-  padding-top: 1.5rem;
-  margin-top: 4.6rem;
+  padding-top: 1rem;
+  margin-top: 5.1rem;
+  max-width: 576px;
 }
 
 #article > h1 {
@@ -18,17 +19,63 @@
   max-width: 100%;
 }
 
-#article > img {
-  height: 25rem;
+#article > h2 {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  height: auto;
+  font-size: 1.65rem;
+  line-height: 1.25;
   max-width: 100%;
-  object-fit: cover;
-  background-color: darkcyan;
 }
 
-#article > p {
-  font-size: 1.25rem;
-  line-height: 1.25;
+#article > img {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25rem;
+  max-width: 100%;
   overflow: hidden;
+  object-fit: cover;
+  opacity: 100%;
+  border-radius: variables.$borderRadius;
+}
+
+#article > div {
+  opacity: 50%;
+  gap: 2rem;
+}
+
+#article > #content {
+  display: flex;
+  flex-direction: column;
+  opacity: 100%;
+}
+
+#article > #content > div {
+  line-height: 1.5;
+  font-size: 1.5rem;
+  font-weight: 300;
+  overflow: hidden;
+}
+
+#article > #content > div {
+  height: fit-content;
+}
+
+#article > div > a {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  height: auto;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+  line-height: 1.5;
+  font-size: 1.5rem;
+  font-weight: 300;
+  opacity: 50%;
 }
 
 #article > button {

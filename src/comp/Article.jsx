@@ -1,12 +1,23 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/prop-types */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import articleIcon from '../style/icons/article.jpg';
-import backDark from '../style/icons/backDark.png';
-import backLight from '../style/icons/backLight.png';
+import articleIcon from '../style/icons/noImage.png';
 
-function Article({ lightMode }) {
+function Article({ news, lightMode }) {
   const navigate = useNavigate();
+  const [article, setArticle] = useState({});
+  const [content, setContent] = useState([]);
+
+  useEffect(() => {
+    const getArticle = async () => {
+      const articleNews = news.filter(
+        (obj) => obj.article_id === window.location.hash.slice(2),
+      );
+      setArticle(articleNews[0]);
+    };
+    getArticle();
+  }, [news]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -17,81 +28,51 @@ function Article({ lightMode }) {
     }, 25);
   }, []);
 
-  const article = {
-    id: 0,
-    img: articleIcon,
-    title: `
-      Lorem ipsum dolor sit amet,
-      consectetur adipiscing elit,
-      sed do eiusmod tempor incididunt
-      ut labore et dolore magna aliqua.
-    `,
-    content: `
-      Lorem ipsum dolor sit amet,
-      consectetur adipiscing elit,
-      sed do eiusmod tempor incididunt
-      ut labore et dolore magna aliqua.
-      Lorem ipsum dolor sit amet,
-      consectetur adipiscing elit,
-      sed do eiusmod tempor incididunt
-      ut labore et dolore magna aliqua.
-      Ut enim ad minim veniam, quis nostrud
-      exercitation ullamco laboris nisi
-      ut aliquip ex ea commodo consequat.
-      Duis aute irure dolor in reprehenderit
-      in voluptate velit esse cillum
-      dolore eu fugiat nulla pariatur.
-      Excepteur sint occaecat cupidatat
-      non proident, sunt in culpa qui officia
-      deserunt mollit anim id est laborum.
-      ut aliquip ex ea commodo consequat.
-      Duis aute irure dolor in reprehenderit
-      in voluptate velit esse cillum
-      dolore eu fugiat nulla pariatur.
-      Excepteur sint occaecat cupidatat
-      non proident, sunt in culpa qui officia
-      deserunt mollit anim id est laborum.
-      Excepteur sint occaecat cupidatat
-      non proident, sunt in culpa qui officia
-      deserunt mollit anim id est laborum.
-      ut aliquip ex ea commodo consequat.
-      Duis aute irure dolor in reprehenderit
-      in voluptate velit esse cillum
-      dolore eu fugiat nulla pariatur.
-      Excepteur sint occaecat cupidatat
-      non proident, sunt in culpa qui officia
-      deserunt mollit anim id est laborum.
-      Excepteur sint occaecat cupidatat
-      non proident, sunt in culpa qui officia
-      deserunt mollit anim id est laborum.
-      ut aliquip ex ea commodo consequat.
-      Duis aute irure dolor in reprehenderit
-      in voluptate velit esse cillum
-      dolore eu fugiat nulla pariatur.
-      Excepteur sint occaecat cupidatat
-      non proident, sunt in culpa qui officia
-      deserunt mollit anim id est laborum.
-    `,
-    publishedAt: new Date(Date.now()).toLocaleString(),
-  };
+  useEffect(() => {
+    if (article?.content) {
+      const split = article?.content.split('. ');
+      setContent(split);
+    }
+  }, [article]);
+
   return (
     <main id="article">
-      <h1>{article.title}</h1>
-      <div>{article.publishedAt}</div>
+      <h1>{article?.title}</h1>
+      <div>{article?.category ? `Category - ${article?.category}` : ''}</div>
+      <div>
+        {article?.pubdate ? new Date(article?.pubdate).toLocaleString() : null}
+      </div>
       <img
-        alt="Article"
-        src={article.img}
+        alt=""
+        src={article?.image_url || articleIcon}
+        className={`${lightMode}Accent`}
       />
-      <p>{article.content}</p>
+      <div>{article?.source_id ? `Source - ${article?.source_id}` : ''}</div>
+      <div>{article?.country ? `Country - ${article?.country}` : ''}</div>
+      <div id="content">
+        {content?.map((obj) => (
+          <div key={obj}>
+            {`${obj}.`}
+          </div>
+        ))}
+      </div>
       <button
         type="button"
         onClick={() => navigate(-1)}
         className={`${lightMode === 'dark' ? 'light' : 'dark'}Accent`}
       >
-        <img
-          alt="Back"
-          src={lightMode === 'dark' ? backDark : backLight}
-        />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+        >
+          <path
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeWidth="48"
+            d="M328 112L184 256l144 144"
+          />
+        </svg>
       </button>
     </main>
   );
