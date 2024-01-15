@@ -12,12 +12,12 @@ function Footer({
 }) {
   return (
     <footer
-      className={lightMode}
+      className={`${lightMode}Accent`}
     >
       <div>
         <button
           type="button"
-          className={lightMode}
+          className={`${lightMode}Accent`}
         >
           <img
             alt="Twitter"
@@ -26,7 +26,7 @@ function Footer({
         </button>
         <button
           type="button"
-          className={lightMode}
+          className={`${lightMode}Accent`}
         >
           <img
             alt="Youtube"
@@ -35,12 +35,12 @@ function Footer({
         </button>
       </div>
       <div>
-        <Link to="/" className={lightMode}>
+        <Link to="/" className={`${lightMode}Accent`}>
           Home
         </Link>
         <button
           type="button"
-          className={lightMode}
+          className={`${lightMode}Accent`}
           onClick={(e) => {
             setActive(e);
             setTimeout(() => {

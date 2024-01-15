@@ -39,7 +39,7 @@ function Article({ news, loading, lightMode }) {
 
   if (loading) return <Loading lightMode={lightMode} />;
   return (
-    <main id="article" className={lightMode}>
+    <main id="article">
       <h1>{article?.title}</h1>
       <div>
         {article?.pubdate ? new Date(article?.pubdate).toLocaleString() : null}

@@ -41,7 +41,7 @@ function Home({ news, loading, lightMode }) {
   const renderHome = () => {
     if (newsOne[0]?.title) {
       return (
-        <main id="home" className={lightMode}>
+        <main id="home">
           <h1>Top News</h1>
           {mapNewsCon('newsOne', newsOne)}
           <h1>Recent News</h1>

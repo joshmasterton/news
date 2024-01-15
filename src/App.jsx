@@ -46,7 +46,7 @@ function App() {
     const filterImageQualityTest = uniqueNews.filter((obj) => {
       const articleImg = new Image();
       articleImg.src = obj.image_url;
-      return articleImg.naturalWidth > 800;
+      return articleImg.naturalWidth > 600;
     });
     // Set to state
     setNews(filterImageQualityTest);
@@ -54,13 +54,13 @@ function App() {
   };
 
   useEffect(() => {
-    document.documentElement.className = `${getLightMode(setLightMode)}Accent`;
+    document.documentElement.className = `${getLightMode(setLightMode)}`;
     getNews();
   }, [loading]);
 
   useEffect(() => {
     // Get current light mode
-    document.documentElement.className = `${getLightMode(setLightMode)}Accent`;
+    document.documentElement.className = `${getLightMode(setLightMode)}`;
   }, [lightMode]);
 
   const router = createHashRouter([

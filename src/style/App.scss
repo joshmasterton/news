@@ -6,8 +6,6 @@
 @use './comp/Footer';
 @use './comp/Loading';
 
-html { background-color: variables.$primaryAccent; }
-
 html, body, #root {
   height: 100%;
 }
