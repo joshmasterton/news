@@ -55,7 +55,7 @@ function App() {
 
   useEffect(() => {
     document.documentElement.className = `${getLightMode(setLightMode)}Accent`;
-    return () => getNews();
+    getNews();
   }, [loading]);
 
   useEffect(() => {
