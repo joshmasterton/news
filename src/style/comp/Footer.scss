@@ -6,12 +6,13 @@ footer {
   align-items: center;
   width: 100%;
   padding: 2rem;
+  padding-top: 1rem;
   gap: 1rem;
   border-top: 2px solid variables.$primaryBorder;
 }
 
 footer img { 
-  margin: 1rem;
+  margin: 0.5rem;
 }
 
 footer > div {
@@ -27,4 +28,5 @@ footer > div:nth-child(2) {
 }
 
 footer > p {
+  padding: 1rem;
 }

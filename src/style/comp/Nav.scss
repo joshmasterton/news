@@ -5,17 +5,17 @@ nav {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 1rem;
-  gap: 1rem;
+  padding: 0.5rem;
+  gap: 0.5rem;
   top: 0;
   z-index: 2;
-  background-color: variables.$primary; 
+  box-shadow: variables.$darkShadow;
+  background-color: variables.$primaryAccent; 
   border-bottom: 2px solid variables.$primaryBorder;
 }
 
 nav > a {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: start;
   overflow: hidden;
@@ -27,6 +27,7 @@ nav > a {
 nav > a > img {
   max-width: 4rem;
   width: auto;
+  height: 3rem;
   margin: 0;
   padding-right: 1rem;
   padding-left: 1rem;
@@ -34,8 +35,9 @@ nav > a > img {
 
 nav > a > h1 {
   width: auto;
+  height: 2rem;
   margin: 0;
-  padding: 0;
+  font-size: 1.75rem;
   padding-left: 1rem;
   border-left: 2px solid variables.$primaryBorder;
   border-radius: 0;
@@ -47,21 +49,20 @@ nav > ul, #dropdown, #dropdownHidden {
   flex-direction: column;
   width: 100%;
   max-width: 100%;
-  height: 9rem;
+  height: 9.5rem;
   top: 0;
   right: 0;
-  padding: 1rem;
-  gap: 1rem;
+  padding: 0.5rem;
+  gap: 0.5rem;
   overflow: hidden;
   transform-origin: top;
   transition: transform 0.8s ease;
-  border-bottom: 2px solid variables.$primaryBorder;
+  border-bottom: 2px solid transparent;
   border-radius: 0;
   z-index: 1;
 }
 
 nav > ul > a, #dropdown > a {
-  align-self: flex-end;
 }
 
 #dropdown {
@@ -81,7 +82,7 @@ nav > ul > a, #dropdown > a {
 
 #dropdownHidden {
   display: flex;
-  transform: translateY(-5rem);
+  transform: translateY(-5.1rem);
 }
 
 @media screen and (min-width: 576px) {
@@ -91,10 +92,10 @@ nav > ul > a, #dropdown > a {
     flex-direction: row;
     max-width: 100%;
     width: 100%;
-    height: 3rem;
+    height: 4rem;
     padding: 0;
     justify-content: end;
-    border-bottom: 0px;
+    border-bottom: 0;
   }
 
   #dropdown {
@@ -102,10 +103,10 @@ nav > ul > a, #dropdown > a {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 9rem;
+    height: 9.5rem;
     padding: 0.5rem;
-    transform: translateY(-5rem);
-    border-bottom: 2px solid variables.$primaryBorder; 
+    transform: translateY(-5.1rem);
+    border-bottom: 2px solid transparent; 
   }
 
   nav > button { display: none; }

@@ -11,11 +11,13 @@ function Footer({
   setActive,
 }) {
   return (
-    <footer>
+    <footer
+      className={lightMode}
+    >
       <div>
         <button
           type="button"
-          className={`${lightMode}Accent`}
+          className={lightMode}
         >
           <img
             alt="Twitter"
@@ -24,7 +26,7 @@ function Footer({
         </button>
         <button
           type="button"
-          className={`${lightMode}Accent`}
+          className={lightMode}
         >
           <img
             alt="Twitter"

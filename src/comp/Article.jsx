@@ -2,22 +2,24 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import articleIcon from '../style/icons/noImage.png';
+import Loading from './Loading';
+import noImage from '../style/icons/noImage.png';
 
-function Article({ news, lightMode }) {
+function Article({ news, loading, lightMode }) {
   const navigate = useNavigate();
   const [article, setArticle] = useState({});
   const [content, setContent] = useState([]);
 
+  const getArticle = async () => {
+    const articleNews = news.filter(
+      (obj) => obj.article_id === window.location.hash.slice(2),
+    );
+    setArticle(articleNews[0]);
+  };
+
   useEffect(() => {
-    const getArticle = async () => {
-      const articleNews = news.filter(
-        (obj) => obj.article_id === window.location.hash.slice(2),
-      );
-      setArticle(articleNews[0]);
-    };
     getArticle();
-  }, [news]);
+  }, [loading]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -35,8 +37,9 @@ function Article({ news, lightMode }) {
     }
   }, [article]);
 
+  if (loading) return <Loading lightMode={lightMode} />;
   return (
-    <main id="article">
+    <main id="article" className={lightMode}>
       <h1>{article?.title}</h1>
       <div>{article?.category ? `Category - ${article?.category}` : ''}</div>
       <div>
@@ -44,14 +47,14 @@ function Article({ news, lightMode }) {
       </div>
       <img
         alt=""
-        src={article?.image_url || articleIcon}
+        src={article?.image_url ?? noImage}
         className={`${lightMode}Accent`}
       />
       <div>{article?.source_id ? `Source - ${article?.source_id}` : ''}</div>
       <div>{article?.country ? `Country - ${article?.country}` : ''}</div>
       <div id="content">
-        {content?.map((obj) => (
-          <div key={obj}>
+        {content?.map((obj, index) => (
+          <div key={`${obj}${index.toString()}`}>
             {`${obj}.`}
           </div>
         ))}

@@ -1,7 +1,7 @@
 export const onScroll = (setIsMenu) => {
   setTimeout(() => {
     setIsMenu(false);
-  }, 25);
+  }, 10);
 };
 
 export const onResize = () => {

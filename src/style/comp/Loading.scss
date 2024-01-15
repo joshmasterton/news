@@ -1,0 +1,27 @@
+#loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5.1rem;
+  padding: 5rem;
+  width: 100%;
+  min-height: 30rem;
+  max-height: 100%;
+}
+
+#loadingBar {
+  width: 2.5rem;
+  height: 2.5rem;
+  animation: loop 1s linear infinite;
+  border-radius: 50%;
+  border-right: 3px solid;
+  border-bottom: 2px solid transparent;
+}
+
+@keyframes loop {
+  from {
+    rotate: 0deg;
+  } to {
+    rotate: 360deg;
+  }
+}

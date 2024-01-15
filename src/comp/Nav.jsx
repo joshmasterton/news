@@ -13,7 +13,7 @@ function Nav({ setActive, lightMode, setLightMode }) {
   const [isMenu, setIsMenu] = useState(false);
 
   useEffect(() => {
-    document.documentElement.className = getLightMode(setLightMode);
+    document.documentElement.className = `${getLightMode(setLightMode)}Accent`;
   }, [lightMode]);
 
   useEffect(() => {
@@ -32,28 +32,32 @@ function Nav({ setActive, lightMode, setLightMode }) {
 
   return (
     <>
-      <nav className={lightMode}>
+      <nav className={`${lightMode}Accent ${lightMode}Shadow`}>
         <Link
           to="/"
-          className={lightMode}
+          className={`${lightMode}Accent`}
         >
           <img
             alt=""
             src={planet}
           />
-          <h1>NEWS</h1>
+          <h1
+            className={lightMode === 'dark' ? 'lightBorder' : 'darkBorder'}
+          >
+            NEWS
+          </h1>
         </Link>
-        <ul className={lightMode}>
+        <ul className={`${lightMode}Accent`}>
           <Link
             to="/"
             onClick={(e) => setActive(e)}
-            className={lightMode}
+            className={`${lightMode}Accent`}
           >
             Home
           </Link>
           <button
             type="button"
-            className={lightMode}
+            className={`${lightMode}Accent`}
             onClick={(e) => {
               setActive(e);
               setTimeout(() => {
@@ -67,11 +71,10 @@ function Nav({ setActive, lightMode, setLightMode }) {
         <button
           type="button"
           onClick={(e) => onMenuClick(e)}
-          className={lightMode}
+          className={`${lightMode}Accent`}
         >
           {!isMenu ? (
             <svg
-              xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
               viewBox="0 0 24 24"
@@ -83,7 +86,6 @@ function Nav({ setActive, lightMode, setLightMode }) {
             </svg>
           ) : (
             <svg
-              xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
               viewBox="0 0 24 24"
@@ -98,11 +100,11 @@ function Nav({ setActive, lightMode, setLightMode }) {
       </nav>
       <ul
         id={isMenu ? 'dropdown' : 'dropdownHidden'}
-        className={lightMode}
+        className={`${lightMode}Accent ${lightMode}Shadow`}
       >
         <Link
           to="/"
-          className={lightMode}
+          className={`${lightMode}Accent`}
           onClick={(e) => {
             setIsMenu(false);
             setActive(e);
@@ -112,7 +114,7 @@ function Nav({ setActive, lightMode, setLightMode }) {
         </Link>
         <button
           type="button"
-          className={lightMode}
+          className={`${lightMode}Accent`}
           onClick={(e) => {
             setActive(e);
             setTimeout(() => {

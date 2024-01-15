@@ -1,13 +1,16 @@
-$primary: rgb(230, 230, 235);
+$primary: rgb(255, 255, 255);
 $primaryAccent: rgb(255, 255, 255);
-$primaryBorder: rgb(205, 205, 200);
+$primaryBorder: rgb(255, 255, 255);
 
-$secondary: rgb(24, 24, 26);
-$secondaryAccent: rgb(30, 30, 32);
-$secondaryBorder: rgb(24, 24, 26);
+$secondary: rgb(30, 30, 35);
+$secondaryAccent: rgb(30, 30, 35);
+$secondaryBorder: rgb(30, 30, 35);
 
 $font: black;
 $fontDark: white;
+
+$lightShadow: 0px 0px 8px 0px rgba(20, 20, 23, 0.1);
+$darkShadow: 0px 0px 8px 0px rgba(20, 20, 23, 1);
 
 $borderRadius: 0.25rem;
 $gradient: linear-gradient(
