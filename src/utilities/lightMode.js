@@ -14,11 +14,13 @@ export const getLightMode = (setLightMode) => {
 export const switchLightMode = (setLightMode) => {
   if (localStorage.getItem('theme') === 'dark') {
     localStorage.setItem('theme', 'light');
+    document.documentElement.className = `${getLightMode(setLightMode)}Accent`;
     setLightMode(localStorage.getItem('theme'));
     return localStorage.getItem('theme');
   }
   if (localStorage.getItem('theme') === 'light') {
     localStorage.setItem('theme', 'dark');
+    document.documentElement.className = `${getLightMode(setLightMode)}Accent`;
     setLightMode(localStorage.getItem('theme'));
     return localStorage.getItem('theme');
   }

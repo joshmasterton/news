@@ -29,7 +29,7 @@ function Footer({
           className={lightMode}
         >
           <img
-            alt="Twitter"
+            alt="Youtube"
             src={youtubeIcon}
           />
         </button>

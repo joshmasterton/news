@@ -41,7 +41,6 @@ function Article({ news, loading, lightMode }) {
   return (
     <main id="article" className={lightMode}>
       <h1>{article?.title}</h1>
-      <div>{article?.category ? `Category - ${article?.category}` : ''}</div>
       <div>
         {article?.pubdate ? new Date(article?.pubdate).toLocaleString() : null}
       </div>
@@ -51,7 +50,6 @@ function Article({ news, loading, lightMode }) {
         className={`${lightMode}Accent`}
       />
       <div>{article?.source_id ? `Source - ${article?.source_id}` : ''}</div>
-      <div>{article?.country ? `Country - ${article?.country}` : ''}</div>
       <div id="content">
         {content?.map((obj, index) => (
           <div key={`${obj}${index.toString()}`}>

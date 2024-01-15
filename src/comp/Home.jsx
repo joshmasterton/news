@@ -20,7 +20,7 @@ function Home({ news, loading, lightMode }) {
           to={`/${obj.article_id || 0}`}
           key={obj.article_id || obj}
           className={`
-            ${lightMode}Accent ${lightMode}Shadow
+            ${lightMode}Accent
           `}
         >
           <img
@@ -38,23 +38,30 @@ function Home({ news, loading, lightMode }) {
     </div>
   );
 
+  const renderHome = () => {
+    if (newsOne[0]?.title) {
+      return (
+        <main id="home" className={lightMode}>
+          <h1>Top News</h1>
+          {mapNewsCon('newsOne', newsOne)}
+          <h1>Recent News</h1>
+          {mapNewsCon('newsTwo', newsTwo)}
+          <h1>More News</h1>
+          {mapNewsCon('newsThree', newsThree)}
+          <h1>More News</h1>
+          {mapNewsCon('newsTwo', newsFour)}
+          {mapNewsCon('newsTwo', newsFive)}
+          <h1>More News</h1>
+          {mapNewsCon('newsTwo', newsSix)}
+          {mapNewsCon('newsTwo', newsSeven)}
+        </main>
+      );
+    }
+    return null;
+  };
+
   if (loading) return <Loading lightMode={lightMode} />;
-  return (
-    <main id="home" className={lightMode}>
-      <h1>{newsOne ? 'Top News' : ''}</h1>
-      {mapNewsCon('newsOne', newsOne)}
-      <h1>{newsOne ? 'Recent News' : ''}</h1>
-      {mapNewsCon('newsTwo', newsTwo)}
-      <h1>{newsOne ? 'More News' : ''}</h1>
-      {mapNewsCon('newsThree', newsThree)}
-      <h1>{newsOne ? 'More News' : ''}</h1>
-      {mapNewsCon('newsTwo', newsFour)}
-      {mapNewsCon('newsTwo', newsFive)}
-      <h1>{newsOne ? 'More News' : ''}</h1>
-      {mapNewsCon('newsTwo', newsSix)}
-      {mapNewsCon('newsTwo', newsSeven)}
-    </main>
-  );
+  return renderHome();
 }
 
 export default Home;

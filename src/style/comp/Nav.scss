@@ -56,13 +56,10 @@ nav > ul, #dropdown, #dropdownHidden {
   gap: 0.5rem;
   overflow: hidden;
   transform-origin: top;
-  transition: transform 0.8s ease;
+  transition: transform 0.4s ease;
   border-bottom: 2px solid transparent;
   border-radius: 0;
   z-index: 1;
-}
-
-nav > ul > a, #dropdown > a {
 }
 
 #dropdown {

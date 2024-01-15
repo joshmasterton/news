@@ -1,7 +1,16 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useEffect } from 'react';
 
 function Loading({ lightMode }) {
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }, 25);
+  }, []);
+
   return (
     <div id="loading" className={lightMode}>
       <div
